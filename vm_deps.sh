@@ -31,10 +31,18 @@ install_docker() {
 
 install_packages() {
     sudo apt update -y && sudo apt upgrade -y
+    sudo apt install -y vim wireshark openssh-server
+}
+
+enable_services() {
+    # Start SSH server
+    sudo systemctl enable ssh
+    sudo systemctl start ssh
 }
 
 main() {
     install_packages
+    enable_services
     install_docker
 }
 
