@@ -1,0 +1,6 @@
+ftp server
+telnet server
+
+http client -> run themselves `curl`
+ftp client -> python/bash script
+telnet client -> run themselves `telnet`
