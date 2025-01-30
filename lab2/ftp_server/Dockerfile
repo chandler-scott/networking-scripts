@@ -14,7 +14,7 @@ RUN \
         echo "chroot_local_user=YES" >> /etc/vsftpd/vsftpd.conf; \
         echo "allow_writeable_chroot=YES" >> /etc/vsftpd/vsftpd.conf; \
         echo "seccomp_sandbox=NO" >> /etc/vsftpd/vsftpd.conf;          \ 
-        echo "hi" > "/home/bobby/hi"
+        echo "FLAG{FTP_IS_INSECURE}" > "/home/bobby/flag"
 
 CMD vsftpd /etc/vsftpd/vsftpd.conf
 
