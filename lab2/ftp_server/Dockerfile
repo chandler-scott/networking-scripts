@@ -13,7 +13,8 @@ RUN \
         echo "anonymous_enable=NO" >> /etc/vsftpd/vsftpd.conf; \
         echo "chroot_local_user=YES" >> /etc/vsftpd/vsftpd.conf; \
         echo "allow_writeable_chroot=YES" >> /etc/vsftpd/vsftpd.conf; \
-        echo "seccomp_sandbox=NO" >> /etc/vsftpd/vsftpd.conf;           # NOTE this new line
+        echo "seccomp_sandbox=NO" >> /etc/vsftpd/vsftpd.conf;          \ 
+        echo "hi" > "/home/bobby/hi"
 
 CMD vsftpd /etc/vsftpd/vsftpd.conf
 
