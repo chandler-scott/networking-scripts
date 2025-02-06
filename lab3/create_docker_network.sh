@@ -1,4 +1,10 @@
-docker network create -d macvlan \ 
---subnet=192.168.0.0/24 \
---gateway=192.168.0.1 \
--o parent=wlp2s0 macvlan_net
+#!/bin/bash
+
+SUBNET="192.168.100.0/24"
+GATEWAY="192.168.100.1"
+INTERFACE="enp42s0"
+
+docker network create -d macvlan \
+--subnet=$SUBNET \
+--gateway=$GATEWAY \
+-o parent=$INTERFACE macvlan_net

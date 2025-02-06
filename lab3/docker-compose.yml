@@ -1,28 +1,49 @@
 services:
-  dns:
+  dns_server:
     image: ubuntu/bind9
     container_name: dns
     restart: always
     networks:
       macvlan_net:
-        ipv4_address: 192.168.0.100
+        ipv4_address: ${DNS_SERVER_IP}
     environment:
       - BIND9_USER=root
+      - DNS_SERVER_IP=${DNS_SERVER_IP}
+      - WEB_SERVER_IP=${WEB_SERVER_IP}
+      - IMAGE_SERVER_IP=${IMAGE_SERVER_IP}
     volumes:
-      - ./config:/etc/bind
-      - ./cache:/var/cache/bind
-      - ./log:/var/log/bind
+      - ./dns/start-dns.sh:/start-dns.sh
+      - ./dns/named.conf:/etc/bind/named.conf
+      - ./dns/db.template.local:/etc/bind/zones/db.template.local
+      - ./dns/config:/etc/bind
+    entrypoint: ["bash", "/start-dns.sh"]
     ports:
       - "53:53/udp"
       - "53:53/tcp"
   
-  http:
+  web_server:
     image: nginx
     container_name: http
     restart: always
     networks:
       macvlan_net:
-        ipv4_address: 192.168.0.101
+        ipv4_address: ${WEB_SERVER_IP}
+    volumes:
+      - ./web_server:/usr/share/nginx/html:ro
+    dns:
+      - ${DNS_SERVER_IP}
+    ports:
+      - "80:80/tcp"
+  
+  image_server:
+    build: ./image_server
+    container_name: image 
+    restart: always
+    networks:
+      macvlan_net:
+        ipv4_address: ${IMAGE_SERVER_IP}
+    dns:
+      - ${DNS_SERVER_IP}
     ports:
       - "80:80/tcp"
 

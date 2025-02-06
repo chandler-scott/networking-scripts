@@ -1,0 +1,14 @@
+$TTL 86400
+@ IN SOA ns1.networking.local. admin.networking.local. (
+1      ; Serial
+604800 ; Refresh
+86400  ; Retry
+2419200 ; Expire
+86400 ) ; Minimum TTL
+;
+@            IN   NS   ns1.networking.local.
+ns1          IN   A    192.168.0.100
+dns-server   IN   A    192.168.0.100
+web-server   IN   A    192.168.0.101
+image-server IN   A    192.168.0.102
+
