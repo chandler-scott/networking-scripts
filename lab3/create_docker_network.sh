@@ -2,7 +2,7 @@
 
 SUBNET="192.168.100.0/24"
 GATEWAY="192.168.100.1"
-INTERFACE="enp42s0"
+INTERFACE="enp0s8"
 
 # Clean up
 docker compose down
