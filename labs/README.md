@@ -1,10 +1,3 @@
----
-title: "CSCI-3400: Networking Scripts"
-date: 2025-02-09
-author: "Chandler Scott"
-lang: "en"
----
-
 # Labs
 This repository holds scripts and instructions for labs.
 
