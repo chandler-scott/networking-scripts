@@ -25,6 +25,7 @@
 - `less <file>` - View file with navigation
 - `head -n <number> <file>` - Show first N lines
 - `tail -n <number> <file>` - Show last N lines
+- `tail -F <file>` - Monitor file updates in real time
 - `nano <file>` - Open file in Nano editor
 - `vim <file>` - Open file in Vim editor
 
